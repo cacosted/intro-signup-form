@@ -1,0 +1,44 @@
+:root {
+  
+  --main: hsl(248, 32%, 49%);
+  --secondary: hsl(154, 59%, 51%);
+  --accent: hsl(0, 100%, 74%);
+  --main-dark: hsl(249, 10%, 26%);
+  --main-light: hsl(246, 25%, 77%);
+  --family: 'Poppins', sans-serif;
+  --small: 400;
+  --medium: 500;
+  --large: 600;
+  --x-large:700;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--family);
+}
+
+input {
+  border: none;
+  width: 100%;
+}
+
+label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  border: 1px solid black
+}
+
+.intro__helper {
+  text-align: end;
+}
+
+.hidden {
+  display: none;
+}
