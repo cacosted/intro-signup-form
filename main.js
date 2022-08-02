@@ -5,15 +5,19 @@ form.addEventListener('submit', (event) => {
   event.preventDefault()
   const inputValues = [...inputs]
   handleErrorOnEmpty(inputs)
+  const formData = getValidData(inputs)
+
+  if(Object.keys(formData).length === 4) {
+    sendForm()
+  }
 })
 
-function handleErrorOnEmpty(array) {
+function handleErrorOnEmpty(inputList) {
   const containers = document.querySelectorAll('.intro__inputContainer')
   const helperText = document.querySelectorAll('.intro__helper')
 
-  array.forEach((input, index) => {
+  inputList.forEach((input, index) => {
     if(input.value === '') {
-      console.log(input)
       if(input.name === 'email') {
         input.value = 'email@example.com'
       }
@@ -30,4 +34,23 @@ function handleErrorOnEmpty(array) {
     }
 
   })
+}
+
+function getValidData(inputList) {
+  const dataList = [...inputList].filter(input => input.value !== '').map(input => ({[input.name]:input.value}))
+  return {...dataList}
+}
+
+function sendForm() {
+  const thanksTitle = document.createElement('div')
+  
+  thanksTitle.classList.add('intro__thanks')
+  
+  thanksTitle.innerHTML = `
+    <img class="thanks__img" src="./images/thanks.svg" alt="thanks" />
+    <h1 class="thanks__title">Form submitted successfully.</h1>
+  `
+  form.innerHTML = ''
+  
+  form.append(thanksTitle)
 }

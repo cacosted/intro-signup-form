@@ -80,6 +80,7 @@ input {
   border-radius: 10px;
   margin-block-end: 1.8em;
   box-shadow: var(--regular-shadow);
+  line-height: 1.2;
 }
 
 .intro__subtitle {
@@ -92,6 +93,7 @@ input {
 .intro__subtitle span {
   font-weight: var(--large);
 }
+
 /* ################## Intro Form */
 
 .intro__form {
@@ -181,6 +183,27 @@ input {
 .intro__link:visited {
   color: var(--main);
 }
+
+/* ################## Form Thanks */
+.intro__thanks {
+  color: var(--accent);
+  min-height: 400px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 1em;
+}
+
+.thanks__img {
+  max-width: 80%;
+}
+
+.thanks__title {
+  text-align: center;
+  line-height: 1.1;
+  font-weight: var(--large);
+}
+
 /* ################## Utilities */
 .intro__helper {
   text-align: end;
