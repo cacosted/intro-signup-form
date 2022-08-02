@@ -92,10 +92,7 @@ input {
 .intro__subtitle span {
   font-weight: var(--large);
 }
-.intro
 /* ################## Intro Form */
-/* .intro__formContainer {
-} */
 
 .intro__form {
   background-color: var(--white);
@@ -109,6 +106,7 @@ input {
 }
 
 .intro__inputContainer {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -124,6 +122,12 @@ input {
   border-radius: 5px;
 }
 
+.intro__img {
+  position: absolute;
+  right: 0;
+  margin-inline-end: 1em;
+}
+
 .intro__input:focus {
   outline: none;
   border: none;
@@ -131,6 +135,10 @@ input {
 
 .intro__input:focus-within {
   border: 1.5px solid var(--main-dark);
+}
+
+.intro__helper {
+  color: var(--accent)
 }
 
 .intro__submit {
@@ -146,6 +154,14 @@ input {
   text-align: center;
   letter-spacing: 1px;
   box-shadow: var(--inner-shadow)
+}
+
+.intro__submit:hover {
+  filter: brightness(110%);
+}
+
+.intro__submit:active {
+  filter: brightness(95%);
 }
 
 .intro__disclaimer {
@@ -178,6 +194,18 @@ input {
   width: 90%;
   max-width: 500px;
   margin-inline: auto;
+}
+
+.errorContainer {
+  border: 1.5px solid var(--accent)
+}
+
+.errorInput {
+  color: var(--accent)
+}
+
+.errorInput:focus {
+  border-color: var(--accent)
 }
 
 
