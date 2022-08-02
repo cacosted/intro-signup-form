@@ -1,23 +1,33 @@
 const form = document.querySelector('#intro-form')
 const inputs = document.querySelectorAll('.intro__input')
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault()
-  const inputValues = [...inputs]
-  handleErrorOnEmpty(inputs)
-  const formData = getValidData(inputs)
+const isEmpty = (text) => !Boolean(text)
 
-  if(Object.keys(formData).length === 4) {
-    sendForm()
-  }
-})
+const getValidData = (inputList) => {
+  const dataList = [...inputList].filter(input => input.value !== '').map(input => ({[input.name]:input.value}))
+  return {...dataList}
+}
 
-function handleErrorOnEmpty(inputList) {
+const sendForm = () => {
+  const thanksTitle = document.createElement('div')
+  
+  thanksTitle.classList.add('intro__thanks')
+  
+  thanksTitle.innerHTML = `
+    <img class="thanks__img" src="./images/thanks.svg" alt="thanks" />
+    <h1 class="thanks__title">Form submitted successfully.</h1>
+  `
+  form.innerHTML = ''
+  
+  form.append(thanksTitle)
+}
+
+const handleErrorOnEmpty = (inputList) => {
   const containers = document.querySelectorAll('.intro__inputContainer')
   const helperText = document.querySelectorAll('.intro__helper')
 
   inputList.forEach((input, index) => {
-    if(input.value === '') {
+    if(isEmpty(input.value)) {
       if(input.name === 'email') {
         input.value = 'email@example.com'
       }
@@ -36,21 +46,14 @@ function handleErrorOnEmpty(inputList) {
   })
 }
 
-function getValidData(inputList) {
-  const dataList = [...inputList].filter(input => input.value !== '').map(input => ({[input.name]:input.value}))
-  return {...dataList}
-}
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  const inputValues = [...inputs]
+  handleErrorOnEmpty(inputs)
+  const formData = getValidData(inputs)
 
-function sendForm() {
-  const thanksTitle = document.createElement('div')
-  
-  thanksTitle.classList.add('intro__thanks')
-  
-  thanksTitle.innerHTML = `
-    <img class="thanks__img" src="./images/thanks.svg" alt="thanks" />
-    <h1 class="thanks__title">Form submitted successfully.</h1>
-  `
-  form.innerHTML = ''
-  
-  form.append(thanksTitle)
-}
+  if(Object.keys(formData).length === 4) {
+    sendForm()
+  }
+})
+
